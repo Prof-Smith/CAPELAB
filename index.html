@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Valuation Reality Lab</title>
-  <link rel="stylesheet" href="css/styles.css?v=20260819-forwardchart-final">
+  <link rel="stylesheet" href="css/styles.css?v=20260819-worldclass">
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
@@ -17,9 +17,35 @@
   </div>
 </header>
 <main>
-<section class="panel">
-  <h2>A note to students</h2>
-  <p>CAPE is useful for thinking about long-run expected returns, but it is not a precise market-timing tool. This lab distinguishes realized historical outcomes from current-period estimates based on similar historical CAPE regimes.</p>
+<section class="panel instructor-note">
+  <h2>A note to students: valuation, caution, and the CAPE ratio</h2>
+  <p>I have been thinking a lot about valuations recently. Most of the time I avoid making directional market predictions because those forecasts are occasionally right, but often unreliable. The value investor in me still favors proceeding with caution, preserving a margin of safety, and avoiding the temptation to confuse expensive markets with precisely timed crash predictions.</p>
+  <p>One valuation measure worth studying is the CAPE ratio, or cyclically adjusted price-to-earnings ratio. CAPE compares the current level of the market with inflation-adjusted earnings averaged over the previous ten years. The purpose of the ten-year earnings average is to smooth out unusually strong or unusually weak earnings years and give students a longer-term view of valuation.</p>
+  <p>The key lesson is not simply that a high CAPE means “sell” or that a low CAPE means “buy.” A high CAPE may suggest that future long-run returns could be lower than usual, but it does not tell us exactly when a downturn will occur. Markets can remain expensive for extended periods. CAPE is therefore better understood as a tool for thinking about valuation risk and expected returns, not as a precise market-timing signal.</p>
+  <p>This lab asks you to test that idea visually. Use the charts below to compare high-CAPE periods with later drawdowns and forward returns. The goal is to distinguish between three ideas: high valuation, future return expectations, and the timing of market declines.</p>
+</section>
+<section class="panel core-lesson">
+  <h2>Core lesson</h2>
+  <p><strong>CAPE is not a crash predictor.</strong> CAPE is a valuation tool that helps investors think about long-run expected returns, valuation risk, and the discipline required when prices are high relative to smoothed earnings.</p>
+</section>
+<section class="panel guide-panel">
+  <h2>How to read this dashboard</h2>
+  <ol class="steps">
+    <li><strong>Start with the current CAPE level and percentile.</strong> This tells you how unusual today’s valuation is relative to market history.</li>
+    <li><strong>Use the CAPE threshold slider.</strong> Highlight past periods when valuations were similarly elevated.</li>
+    <li><strong>Compare valuation with drawdowns.</strong> Ask whether high valuation reliably identified the start of a downturn.</li>
+    <li><strong>Review forward returns.</strong> Test whether CAPE appears more useful for long-run expected returns than short-run timing.</li>
+    <li><strong>Make a decision.</strong> Decide how a disciplined investor should respond when valuations are historically expensive.</li>
+  </ol>
+</section>
+<section class="panel analog-caution">
+  <h2>Historical analog caution</h2>
+  <p>Historical analog estimates are not forecasts. They summarize what happened after past periods with similar CAPE levels. Treat them as base-rate evidence, not as a prediction of what must happen next.</p>
+</section>
+<section class="panel concept-grid">
+  <div class="concept-card"><h3>What CAPE measures</h3><p>CAPE compares market price to the average of the previous ten years of inflation-adjusted earnings.</p></div>
+  <div class="concept-card"><h3>What CAPE can help with</h3><p>CAPE can help frame long-run expected return risk when prices are high relative to smoothed earnings.</p></div>
+  <div class="concept-card"><h3>What CAPE cannot do</h3><p>CAPE does not reliably identify the exact month or year when a market downturn will begin.</p></div>
 </section>
 <section class="panel">
   <h2>Load the data</h2>
@@ -36,16 +62,27 @@
   <button id="downloadCsv">Download Clean CSV</button>
 </section>
 <section id="scenarioOutput" class="panel"></section>
-<section class="panel"><h2>CAPE Through Time</h2><div id="capeChart" class="chart"></div></section>
-<section class="panel"><h2>S&P Drawdown Explorer</h2><div id="drawdownChart" class="chart"></div></section>
-<section class="panel"><h2>CAPE and Future Real Returns</h2><div id="scatterChart" class="chart"></div></section>
-<section class="panel">
-  <h2>Forward Return Profile</h2>
-  <p class="caption">Bars show annualized forward real returns. Current-period values are historical analog estimates when realized outcomes are not yet observable.</p>
-  <div id="forwardChart" class="chart small"></div>
-</section>
+<section class="panel"><h2>CAPE Through Time</h2><p class="caption">The threshold slider highlights months when CAPE was above the selected valuation level.</p><div id="capeChart" class="chart"></div></section>
+<section class="panel"><h2>S&P Drawdown Explorer</h2><p class="caption">Drawdowns are computed from the real total return price series when available, otherwise from real price.</p><div id="drawdownChart" class="chart"></div></section>
+<section class="panel"><h2>CAPE and Future Real Returns</h2><p class="caption">This scatterplot tests whether starting CAPE helps explain subsequent ten-year real returns.</p><div id="scatterChart" class="chart"></div></section>
+<section class="panel"><h2 id="forwardTitle">What Happened Next? Forward Return Profile</h2><p id="forwardCaption" class="caption">Bars show annualized forward real returns. Current-period values are historical analog estimates when realized outcomes are not yet observable.</p><div id="forwardChart" class="chart small"></div></section>
 <section class="panel"><h2>Valuation Regime Summary</h2><div id="heatmapTable"></div></section>
+<section class="panel interpretation-panel">
+  <h2>Plain-English valuation guide</h2>
+  <div class="table-wrap"><table><tr><th>CAPE Range</th><th>Interpretation</th><th>Decision question</th></tr><tr><td>Below 15</td><td>Historically inexpensive</td><td>Is the market cheap because future fundamentals are impaired, or because investors are too pessimistic?</td></tr><tr><td>15 to 25</td><td>Normal to moderately elevated</td><td>Are expected returns reasonable for the risk being taken?</td></tr><tr><td>25 to 35</td><td>Expensive</td><td>What margin of safety remains if earnings disappoint?</td></tr><tr><td>Above 35</td><td>Historically extreme</td><td>Should a disciplined investor reduce risk, rebalance, or simply lower future return expectations?</td></tr></table></div>
+</section>
+<section class="panel decision-lab">
+  <h2>Student decision prompt</h2>
+  <p><strong>Scenario:</strong> It is the latest observation in the dataset. CAPE is near the top of its historical range. If you were managing a long-term portfolio, what would you do?</p>
+  <div class="choice-grid"><div>A. Sell all equities</div><div>B. Reduce equity exposure</div><div>C. Continue dollar-cost averaging</div><div>D. Ignore valuation</div></div>
+  <p class="caption">Use evidence from the CAPE chart, drawdown chart, valuation regime table, and forward return profile to defend your answer.</p>
+</section>
+<section class="panel big-question">
+  <h2>Big question</h2>
+  <p>If valuation is poor at timing crashes but useful for estimating long-run return pressure, how should a disciplined investor respond to historically expensive markets?</p>
+</section>
+<section class="panel reflection"><h2>Student reflection questions</h2><ol><li>Does a high CAPE ratio reliably predict an imminent market crash?</li><li>Does CAPE appear more useful for estimating long-run future returns than short-run market timing?</li><li>If CAPE is near a historical extreme, should an investor sell, reduce risk, continue dollar-cost averaging, or ignore valuation?</li><li>How would your answer change if your investment horizon were one year, ten years, or thirty years?</li><li>What does CAPE help you understand about expected returns, and what does it fail to tell you about timing?</li></ol></section>
 </main>
-<script src="js/app.js?v=20260819-forwardchart-final"></script>
+<script src="js/app.js?v=20260819-worldclass"></script>
 </body>
 </html>

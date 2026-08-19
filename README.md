@@ -1,10 +1,16 @@
-# Valuation Reality Lab, Forward Chart Final Fix
+# Valuation Reality Lab, CAPE Notes Restored
 
-This version fixes the Forward Return Profile issue by:
+This package restores the explanatory CAPE notes while preserving the recent technical fixes:
 
-1. Using a dedicated categorical bar-chart layout.
-2. Removing all date-based shapes from the forward-return chart.
-3. Calling `Plotly.purge('forwardChart')` before redrawing the bar chart.
-4. Adding cache-busting version tags to `index.html` for both CSS and JavaScript.
+- CAPE-H removed.
+- Shiller `year.month` date parsing fixed.
+- Latest observation estimates handled as historical analog estimates.
+- 10Y downside card renamed as `10Y Forward Downside Estimate`.
+- Forward Return Profile uses a dedicated categorical bar chart.
+- Cache-busting version tags added to CSS and JavaScript links.
 
-If a previously deployed GitHub Pages site still shows timestamp labels, upload this full package, commit, then hard refresh the browser.
+Upload all files to the root of the GitHub repository and commit the changes.
+
+## World-class instructional additions
+
+This version adds a Core Lesson box, a How to Read This Dashboard section, a Historical Analog Caution note, a plain-English valuation guide, a student decision prompt, and a final Big Question. It also dynamically labels the forward-return chart as either realized historical outcomes or current-period historical analog estimates.
