@@ -1,15 +1,11 @@
-# Valuation Reality Lab, CAPE-only date-fixed version
+# Valuation Reality Lab, CAPE-only downside-fix version
 
-This GitHub Pages package reads Robert Shiller's `ie_data.xlsx` locally in the browser and visualizes CAPE, drawdowns, and forward returns.
+This version fixes the latest-observation downside card.
 
-## Important fix
+## Key fix
 
-The Shiller workbook's `Date` column uses a `year.month` convention. For example, `2026.08` means August 2026. Earlier versions treated this as a decimal year, which caused August 2026 to display around February 2026. This version fixes that parser.
+For the latest observation, a realized 10-year max drawdown cannot be calculated because the future is not observable. The app now returns unavailable for incomplete forward horizons and then estimates the downside card from historical months with similar CAPE levels. The card is titled **10Y Forward Downside Estimate** to avoid implying that the value is realized.
 
 ## Deploy
 
-Upload these files to the root of a GitHub repository and enable GitHub Pages from `main` branch `/root`.
-
-## Forward return labels
-
-For historical scenarios with enough later data, the cards show realized forward returns. For the latest observations, future returns cannot be observed yet, so the app estimates forward-return cards using historical months with similar CAPE levels.
+Upload all files to the root of your GitHub repository and commit. GitHub Pages will update from the same Pages settings.
