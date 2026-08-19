@@ -1,5 +1,10 @@
-# Valuation Reality Lab, chart-fix version
+# Valuation Reality Lab, Forward Chart Final Fix
 
-This version fixes the Forward Return Profile chart by using a dedicated categorical bar-chart layout. The earlier version reused the time-series layout, which caused Plotly to treat the x-axis like dates and display strange timestamp labels.
+This version fixes the Forward Return Profile issue by:
 
-Upload all files to the root of the GitHub repository and commit. GitHub Pages will update from the existing Pages settings.
+1. Using a dedicated categorical bar-chart layout.
+2. Removing all date-based shapes from the forward-return chart.
+3. Calling `Plotly.purge('forwardChart')` before redrawing the bar chart.
+4. Adding cache-busting version tags to `index.html` for both CSS and JavaScript.
+
+If a previously deployed GitHub Pages site still shows timestamp labels, upload this full package, commit, then hard refresh the browser.
