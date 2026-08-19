@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Valuation Reality Lab | CAPE, CAPE-H, and Market Drawdowns</title>
+  <title>Valuation Reality Lab | CAPE and Market Drawdowns</title>
   <link rel="stylesheet" href="css/styles.css" />
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
@@ -13,7 +13,7 @@
     <div class="hero-content">
       <p class="eyebrow">FIN Valuation Lab</p>
       <h1>Valuation Reality Lab</h1>
-      <p class="subtitle">Compare CAPE, CAPE-H / TR CAPE, and S&P drawdowns to test whether valuation is a warning signal, a timing tool, or something more subtle.</p>
+      <p class="subtitle">Compare CAPE and S&P drawdowns to test whether valuation is a warning signal, a timing tool, or something more subtle.</p>
       <div class="hero-actions">
         <a href="#upload" class="button primary">Load Shiller Workbook</a>
         <a href="#reflection" class="button secondary">Student Questions</a>
@@ -36,7 +36,7 @@
       <div class="drop-zone" id="dropZone">
         <input id="fileInput" type="file" accept=".xlsx,.xls,.csv" />
         <strong>Choose or drag the Shiller workbook here</strong>
-        <span>Expected columns include Date, Price, Real Price, CAPE, TR CAPE, and return fields.</span>
+        <span>Expected columns include Date, Price, Real Price, CAPE, and return fields.</span>
       </div>
       <div class="notice" id="dataNotice">A teaching sample is loaded by default. Upload <strong>ie_data.xlsx</strong> to replace it with the real Shiller data.</div>
     </section>
@@ -59,7 +59,7 @@
 
     <section class="chart-panel">
       <div class="chart-title">
-        <h2>CAPE vs. CAPE-H / TR CAPE</h2>
+        <h2>CAPE Through Time</h2>
         <p>Use the threshold slider to highlight expensive valuation regimes.</p>
       </div>
       <div id="capeChart" class="chart"></div>
@@ -101,7 +101,7 @@
         <li>Does CAPE appear more useful for estimating long-run future returns than short-run market timing?</li>
         <li>If CAPE is near a historical extreme, should an investor sell, reduce risk, continue dollar-cost averaging, or ignore valuation?</li>
         <li>How would your answer change if your investment horizon were one year, ten years, or thirty years?</li>
-        <li>How does the answer change when you compare CAPE to CAPE-H / TR CAPE rather than looking at CAPE alone?</li>
+        <li>What does CAPE help you understand about expected returns, and what does it fail to tell you about timing?</li>
       </ol>
     </section>
 

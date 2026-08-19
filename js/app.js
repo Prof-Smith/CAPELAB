@@ -132,7 +132,7 @@ function buildSample(){
       const ret = 0.006 + Math.sin(t/31)*0.006 + shock;
       tr *= 1+ret;
       rp *= 1+ret*0.75;
-      sample.push({dateDecimal:y+(m-1)/12,date:decimalYearToDate(y+(m-1)/12),price:rp,realPrice:rp,realTRPrice:tr,cape,capeH:cape*.82+3,excessCapeYield:(1/cape)-.015,gs10:.03,tenYearStockReturn:NaN});
+      sample.push({dateDecimal:y+(m-1)/12,date:decimalYearToDate(y+(m-1)/12),price:rp,realPrice:rp,realTRPrice:tr,cape,excessCapeYield:(1/cape)-.015,gs10:.03,tenYearStockReturn:NaN});
     }
   }
   return enrich(sample);
@@ -192,7 +192,6 @@ function renderScenario(){
     <div class="scenario-head"><h2>${title}</h2><p><strong>Nearest available month:</strong> ${dateLabel(r.date)}. CAPE percentile is measured against all loaded observations with valid CAPE values.</p></div>
     <div class="metric-grid">
       <div class="mini-metric"><span>CAPE</span><strong>${fmt.mult(r.cape)}</strong></div>
-      <div class="mini-metric"><span>CAPE-H / TR CAPE</span><strong>${fmt.mult(r.capeH)}</strong></div>
       <div class="mini-metric"><span>CAPE Percentile</span><strong>${fmt.pct(r.capePercentile)}</strong></div>
       <div class="mini-metric"><span>10Y Max Drawdown</span><strong>${fmt.pct(r.maxDrawdown10)}</strong></div>
       <div class="mini-metric"><span>1Y Forward Return</span><strong>${fmt.pct(r.forward1)}</strong></div>
@@ -210,7 +209,6 @@ function renderCharts(){
   const layoutCommon={paper_bgcolor:'white',plot_bgcolor:'white',font:{family:'Segoe UI, Arial'},margin:{l:55,r:25,t:34,b:45},hovermode:'x unified',legend:{orientation:'h',y:-.18},shapes:[{type:'line',xref:'x',yref:'paper',x0:scenario.date,x1:scenario.date,y0:0,y1:1,line:{color:'#111827',width:2,dash:'dot'}}]};
   Plotly.newPlot('capeChart',[
     {x,y:rows.map(r=>r.cape),name:'CAPE',mode:'lines',line:{color:'#2563eb',width:2.5}},
-    {x,y:rows.map(r=>r.capeH),name:'CAPE-H / TR CAPE',mode:'lines',line:{color:'#f59e0b',width:2}},
     {x:highX,y:highY,name:`CAPE > ${threshold}x`,mode:'markers',marker:{color:'#b91c1c',size:5,opacity:.75}},
     {x,y:rows.map(()=>med),name:'Historical Median',mode:'lines',line:{color:'#64748b',dash:'dash'}},
     {x,y:rows.map(()=>p90),name:'90th Percentile',mode:'lines',line:{color:'#dc2626',dash:'dot'}}

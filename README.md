@@ -1,6 +1,6 @@
 # Valuation Reality Lab
 
-A GitHub Pages-ready finance lab for comparing CAPE, CAPE-H / TR CAPE, S&P drawdowns, and future real returns.
+A GitHub Pages-ready finance lab for comparing CAPE, S&P drawdowns, and future real returns.
 
 ## What this package includes
 
@@ -39,7 +39,6 @@ Expected Shiller columns include:
 - Real Earnings
 - Real Total Return Scaled Earnings
 - CAPE
-- TR CAPE, used in the lab as CAPE-H / TR CAPE
 - Excess CAPE Yield
 - 10-year forward return fields, where available
 
