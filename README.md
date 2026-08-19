@@ -9,3 +9,7 @@ The Shiller workbook's `Date` column uses a `year.month` convention. For example
 ## Deploy
 
 Upload these files to the root of a GitHub repository and enable GitHub Pages from `main` branch `/root`.
+
+## Forward return labels
+
+For historical scenarios with enough later data, the cards show realized forward returns. For the latest observations, future returns cannot be observed yet, so the app estimates forward-return cards using historical months with similar CAPE levels.
