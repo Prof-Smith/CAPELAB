@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valuation Reality Lab | CAPE, CAPE-H, and Market Drawdowns</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">FIN Valuation Lab</p>
+      <h1>Valuation Reality Lab</h1>
+      <p class="subtitle">Compare CAPE, CAPE-H / TR CAPE, and S&P drawdowns to test whether valuation is a warning signal, a timing tool, or something more subtle.</p>
+      <div class="hero-actions">
+        <a href="#upload" class="button primary">Load Shiller Workbook</a>
+        <a href="#reflection" class="button secondary">Student Questions</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="instructor-note panel">
+      <h2>A note to students</h2>
+      <p>I have been thinking a lot about valuations recently. Most of the time I avoid making directional market predictions because those forecasts are occasionally right, but often unreliable. The value investor in me still favors proceeding with caution, preserving a margin of safety, and avoiding the temptation to confuse expensive markets with precisely timed crash predictions.</p>
+      <p>The CAPE ratio, or cyclically adjusted price-to-earnings ratio, compares market prices with inflation-adjusted earnings averaged over the previous ten years. The useful question is not simply whether CAPE is high. The better question is whether high CAPE has historically done a better job warning about lower long-run future returns than forecasting the timing of market downturns.</p>
+    </section>
+
+    <section id="upload" class="panel upload-card">
+      <div>
+        <h2>Load the data</h2>
+        <p>Use Robert Shiller's <code>ie_data.xlsx</code> workbook. The lab reads the spreadsheet locally in your browser. No data leaves the computer.</p>
+      </div>
+      <div class="drop-zone" id="dropZone">
+        <input id="fileInput" type="file" accept=".xlsx,.xls,.csv" />
+        <strong>Choose or drag the Shiller workbook here</strong>
+        <span>Expected columns include Date, Price, Real Price, CAPE, TR CAPE, and return fields.</span>
+      </div>
+      <div class="notice" id="dataNotice">A teaching sample is loaded by default. Upload <strong>ie_data.xlsx</strong> to replace it with the real Shiller data.</div>
+    </section>
+
+    <section class="dashboard-grid" id="statsGrid"></section>
+
+    <section class="controls panel">
+      <div>
+        <label for="threshold">Highlight months where CAPE exceeds <span id="thresholdValue">30</span>x</label>
+        <input id="threshold" type="range" min="5" max="45" step="1" value="30" />
+      </div>
+      <div>
+        <label for="scenarioSelect">Scenario explorer</label>
+        <select id="scenarioSelect"></select>
+      </div>
+      <button id="downloadCsv" class="button secondary small">Download Clean CSV</button>
+    </section>
+
+    <section class="panel scenario-card" id="scenarioOutput"></section>
+
+    <section class="chart-panel">
+      <div class="chart-title">
+        <h2>CAPE vs. CAPE-H / TR CAPE</h2>
+        <p>Use the threshold slider to highlight expensive valuation regimes.</p>
+      </div>
+      <div id="capeChart" class="chart"></div>
+    </section>
+
+    <section class="chart-panel">
+      <div class="chart-title">
+        <h2>S&P Drawdown Explorer</h2>
+        <p>Drawdowns are calculated from the real total return price when available, otherwise from real price.</p>
+      </div>
+      <div id="drawdownChart" class="chart"></div>
+    </section>
+
+    <section class="chart-panel">
+      <div class="chart-title">
+        <h2>CAPE and Future Real Returns</h2>
+        <p>This chart tests the long-horizon valuation question: does starting valuation help explain subsequent returns?</p>
+      </div>
+      <div id="scatterChart" class="chart"></div>
+    </section>
+
+    <section class="chart-panel">
+      <div class="chart-title">
+        <h2>Forward Return Profile for Selected Scenario</h2>
+        <p>Returns are annualized and computed from the real total return price series when available.</p>
+      </div>
+      <div id="forwardChart" class="chart small-chart"></div>
+    </section>
+
+    <section class="panel heatmap-panel">
+      <h2>Valuation Regime Summary</h2>
+      <div id="heatmapTable" class="table-wrap"></div>
+    </section>
+
+    <section id="reflection" class="panel reflection">
+      <h2>Student reflection questions</h2>
+      <ol>
+        <li>Does a high CAPE ratio reliably predict an imminent market crash?</li>
+        <li>Does CAPE appear more useful for estimating long-run future returns than short-run market timing?</li>
+        <li>If CAPE is near a historical extreme, should an investor sell, reduce risk, continue dollar-cost averaging, or ignore valuation?</li>
+        <li>How would your answer change if your investment horizon were one year, ten years, or thirty years?</li>
+        <li>How does the answer change when you compare CAPE to CAPE-H / TR CAPE rather than looking at CAPE alone?</li>
+      </ol>
+    </section>
+
+    <footer class="footer">
+      <p>Educational use only. This lab is not investment advice. Data source intended for use with Robert J. Shiller's public Irrational Exuberance dataset supplied by the instructor.</p>
+    </footer>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
