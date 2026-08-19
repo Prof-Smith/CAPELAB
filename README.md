@@ -14,3 +14,7 @@ Upload all files to the root of the GitHub repository and commit the changes.
 ## World-class instructional additions
 
 This version adds a Core Lesson box, a How to Read This Dashboard section, a Historical Analog Caution note, a plain-English valuation guide, a student decision prompt, and a final Big Question. It also dynamically labels the forward-return chart as either realized historical outcomes or current-period historical analog estimates.
+
+## Layout and attribution update
+
+This version adds the instructor attribution `Zachary A. Smith, Ph.D. | Associate Professor of Economics and Finance`, improves the hero header, adds sticky section navigation, increases the base font size for readability, widens spacing, improves panel hierarchy, and increases chart area height for classroom projection.
