@@ -1,11 +1,5 @@
-# Valuation Reality Lab, CAPE-only downside-fix version
+# Valuation Reality Lab, chart-fix version
 
-This version fixes the latest-observation downside card.
+This version fixes the Forward Return Profile chart by using a dedicated categorical bar-chart layout. The earlier version reused the time-series layout, which caused Plotly to treat the x-axis like dates and display strange timestamp labels.
 
-## Key fix
-
-For the latest observation, a realized 10-year max drawdown cannot be calculated because the future is not observable. The app now returns unavailable for incomplete forward horizons and then estimates the downside card from historical months with similar CAPE levels. The card is titled **10Y Forward Downside Estimate** to avoid implying that the value is realized.
-
-## Deploy
-
-Upload all files to the root of your GitHub repository and commit. GitHub Pages will update from the same Pages settings.
+Upload all files to the root of the GitHub repository and commit. GitHub Pages will update from the existing Pages settings.
